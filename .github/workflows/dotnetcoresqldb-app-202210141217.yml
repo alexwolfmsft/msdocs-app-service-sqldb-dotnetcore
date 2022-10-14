@@ -21,7 +21,7 @@ jobs:
       with:
         files: '**/appsettings.json'
       env:
-        ConnectionStrings.Default: ${{ secrets.DBConnection }}
+        ConnectionStrings.Default: ${{ secrets.DbConnection }}
     - name: Run EF 
       run: | 
         dotnet tool install --global dotnet-ef
