@@ -7,7 +7,7 @@ env:
   CONTAINER_APP_CONTAINER_NAME: dotnetcoresqldb
   CONTAINER_APP_NAME: dotnetcoresqldb-app-202210141217
   CONTAINER_APP_RESOURCE_GROUP_NAME: msdocs-app-db--ef
-  CONTAINER_REGISTRY_LOGIN_SERVER: dotnetcoresqldb20221014122416.azurecr.io
+  CONTAINER_REGISTRY_LOGIN_SERVER: coresqlef.azurecr.io
   DOCKER_FILE_PATH: DotNetCoreSqlDb/Dockerfile
   PROJECT_NAME_FOR_DOCKER: dotnetcoresqldb
 jobs:
@@ -22,8 +22,8 @@ jobs:
       uses: docker/login-action@v1
       with:
         registry: ${{ env.CONTAINER_REGISTRY_LOGIN_SERVER }}
-        username: ${{ secrets.DotNetCoreSqlDb_USERNAME_FFFF }}
-        password: ${{ secrets.DotNetCoreSqlDb_PASSWORD_FFFF }}
+        username: ${{ secrets.coresqlef_USERNAME_FFFF }}
+        password: ${{ secrets.coresqlef_PASSWORD_FFFF }}
     - name: Build and push container image to registry
       uses: docker/build-push-action@v2
       with:
