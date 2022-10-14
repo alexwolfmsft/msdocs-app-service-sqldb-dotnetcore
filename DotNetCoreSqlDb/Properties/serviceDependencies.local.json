@@ -9,6 +9,12 @@
     "sqlite1": {
       "ignored": "true",
       "type": "sqlite"
+    },
+    "mssql2": {
+      "secretStore": null,
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/dotnetcoresqldbdbserver2/databases/DotNetCoreSqlDb_db",
+      "type": "mssql.azure",
+      "connectionId": "ConnectionStrings:Default"
     }
   }
 }

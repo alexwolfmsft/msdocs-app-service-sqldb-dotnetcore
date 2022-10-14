@@ -17,11 +17,8 @@ jobs:
     - name: Checkout to the branch
       uses: actions/checkout@v2
     - name: App Settings Variable Substitution
-      uses: microsoft/variable-substitution@v1
-      with:
-        files: '**/appsettings.json'
       env:
-        ConnectionStrings.Default: ${{ secrets.DbConnection }}
+        AZURE_SQL_CONNECTIONSTRING: ${{ secrets.DbConnection }}
     - name: Run EF 
       run: | 
         dotnet tool install --global dotnet-ef
