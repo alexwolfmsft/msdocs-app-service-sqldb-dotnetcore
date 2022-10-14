@@ -16,7 +16,6 @@ jobs:
     steps:
     - name: Checkout to the branch
       uses: actions/checkout@v2
-    - name: App Settings Variable Substitution
       env:
         AZURE_SQL_CONNECTIONSTRING: ${{ secrets.DbConnection }}
     - name: Run EF 
