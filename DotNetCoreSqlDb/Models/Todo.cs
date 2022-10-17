@@ -14,6 +14,7 @@ namespace DotNetCoreSqlDb.Models
         public DateTime CreatedDate { get; set; }
 
         public string Priority { get; set; }
+        public string Owner { get; set; }
     }
 }
 
