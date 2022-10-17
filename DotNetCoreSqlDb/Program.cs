@@ -20,7 +20,6 @@ else
         options.UseSqlServer(Environment.GetEnvironmentVariable("AZURE_SQL_CONNECTIONSTRING")));
 }
 
-
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

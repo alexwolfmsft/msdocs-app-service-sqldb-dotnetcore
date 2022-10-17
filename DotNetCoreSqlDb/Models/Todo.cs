@@ -15,6 +15,8 @@ namespace DotNetCoreSqlDb.Models
 
         public string Priority { get; set; }
         public string Owner { get; set; }
+
+        public string Test { get; set; }
     }
 }
 
