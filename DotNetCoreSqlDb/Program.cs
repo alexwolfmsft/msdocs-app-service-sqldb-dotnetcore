@@ -9,8 +9,17 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 builder.Services.AddMvc();
 
-builder.Services.AddDbContext<MyDatabaseContext>(options =>
-    options.UseSqlServer(Environment.GetEnvironmentVariable("AZURE_SQL_CONNECTIONSTRING")));
+if(builder.Environment.IsDevelopment())
+{
+    builder.Services.AddDbContext<MyDatabaseContext>(options =>
+        options.UseSqlServer(builder.Configuration.GetConnectionString("Default")));
+}
+else
+{
+    builder.Services.AddDbContext<MyDatabaseContext>(options =>
+        options.UseSqlServer(Environment.GetEnvironmentVariable("AZURE_SQL_CONNECTIONSTRING")));
+}
+
 
 var app = builder.Build();
 
