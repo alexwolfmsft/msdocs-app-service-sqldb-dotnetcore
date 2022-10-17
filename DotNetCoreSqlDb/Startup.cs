@@ -17,18 +17,21 @@ namespace DotNetCoreSqlDb
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        IWebHostEnvironment environment;
+
+        public Startup(IConfiguration configuration, IWebHostEnvironment env)
         {
             Configuration = configuration;
+            environment = env;
         }
 
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
-        public void ConfigureServices(IServiceCollection services, IWebHostEnvironment env)
+        public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            if (env.IsDevelopment())
+            if (environment.IsDevelopment())
             {
                 services.AddDbContext<MyDatabaseContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("AZURE_SQL_CONNECTIONSTRING")));
