@@ -7,6 +7,10 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+builder.Services.AddMvc();
+
+builder.Services.AddDbContext<MyDatabaseContext>(options =>
+    options.UseSqlServer(Environment.GetEnvironmentVariable("AZURE_SQL_CONNECTIONSTRING")));
 
 var app = builder.Build();
 
@@ -18,17 +22,6 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
-if (app.Environment.IsDevelopment())
-{
-    builder.Services.AddDbContext<MyDatabaseContext>(options =>
-        options.UseSqlServer(builder.Configuration.GetConnectionString("AZURE_SQL_CONNECTIONSTRING")));
-}
-else
-{
-    builder.Services.AddDbContext<MyDatabaseContext>(options =>
-        options.UseSqlServer(Environment.GetEnvironmentVariable("AZURE_SQL_CONNECTIONSTRING")));
-}
-
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
@@ -37,5 +30,6 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.MapRazorPages();
+app.MapDefaultControllerRoute();
 
 app.Run();
